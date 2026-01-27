@@ -19,17 +19,17 @@ export const Dashboard = () => {
 
   const navigate = useNavigate();
   const closeModal = () => {
-    navigate("/dashboard");
-    document.querySelector(".modal-box").classList.remove("active");
+    // navigate("/dashboard");
   };
 
   const userId = localStorage.getItem("userId");
   const [projects, setProjects] = useState([]);
   const getProjects = () => {
-    api
-      .get(`/project/user/${userId}`)
-      .then((resp) => setProjects(resp.data))
-      .catch((err) => console.log(err));
+    userId &&
+      api
+        .get(`/project/user/${userId}`)
+        .then((resp) => setProjects(resp.data))
+        .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -61,19 +61,19 @@ export const Dashboard = () => {
       </div>
       <div className="content-section">
         <LeftSidebar />
-        <MainContent projects={projects} />
         {/* <RightSidebar /> */}
+        <Outlet />
       </div>
-      <ProjectsContext.Provider value={{ getProjects }}>
+      {/* <ProjectsContext.Provider value={{ getProjects }}>
         <div className="modal-box">
           <div className="modal-content">
             <button className="modal-cancel" onClick={closeModal}>
               <IoIosCloseCircleOutline />
             </button>
-            <Outlet />
+            
           </div>
         </div>
-      </ProjectsContext.Provider>
+      </ProjectsContext.Provider> */}
     </div>
   );
 };

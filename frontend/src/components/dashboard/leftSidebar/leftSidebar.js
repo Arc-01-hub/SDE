@@ -11,9 +11,9 @@ export const LeftSidebar = () => {
   return (
     <div className="left-sidebar">
       <div className="sidebar-links">
-        <Link to="/documents">
+        <Link to="/dashboard/projects">
           <SlDocs />
-          My Documents
+          My Projects
         </Link>
         <Link to="/shared">
           <RiFolderReceivedLine />

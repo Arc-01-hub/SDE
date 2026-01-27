@@ -69,6 +69,9 @@ export const Editor = () => {
         <button onClick={() => editor.chain().focus().toggleBulletList().run()}>
           List
         </button>
+          <button onClick={() => editor.chain().focus().undo().run()}>Undo</button>
+          <button onClick={() => editor.chain().focus().redo().run()}>Redo</button>
+
       </div>
 
       {/* EDITOR */}

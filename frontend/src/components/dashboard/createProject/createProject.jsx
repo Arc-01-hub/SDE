@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ProjectsContext } from "../dashboard";
 
 export const CreateProject = () => {
-  const { getProjects } = useContext(ProjectsContext);
+  // const { getProjects } = useContext(ProjectsContext);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [selectedCollaborators, setSelectedCollaborators] = useState([]);
@@ -27,7 +27,7 @@ export const CreateProject = () => {
     api
       .post("/project/create", projectData)
       .then((resp) => {
-        getProjects();
+        // getProjects();
         closeModal();
         setTitle("");
         setSelectedCollaborators("");
@@ -44,8 +44,7 @@ export const CreateProject = () => {
     }
   };
   const closeModal = () => {
-    navigate("/dashboard");
-    document.querySelector(".modal-box").classList.remove("active");
+    // navigate("/dashboard");
   };
 
   return (
@@ -98,9 +97,9 @@ export const CreateProject = () => {
           <button type="submit" className="btn-primary">
             Create Project
           </button>
-          <button type="button" className="btn-secondary" onClick={closeModal}>
+          {/* <button type="button" className="btn-secondary" onClick={closeModal}>
             Cancel
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

@@ -14,10 +14,11 @@ export const Header = () => {
     "/register",
     "/dashboard",
     "/dashboard/create",
+    "/dashboard/details",
     "/editor",
   ];
 
-  if (hiddenRoutes.includes(location.pathname)) {
+  if (hiddenRoutes.some(route => location.pathname.startsWith(route))) {
     return null;
   }
   const toggleDropMenu = () => {

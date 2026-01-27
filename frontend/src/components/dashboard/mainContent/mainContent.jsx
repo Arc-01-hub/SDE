@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
 import "./mainContent.css";
 import ProjectCard from "./projectCard/projectCard";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
-import api from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 export const MainContent = ({ projects }) => {
-  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
 
-  const prepareCreateProject = () => {
-    document.querySelector(".modal-box").classList.add("active");
-    navigate("create");
+  const openModal = () => {
+    // document.querySelector(".modal-box").classList.add("active");
+    navigate("/dashboard/create");
   };
 
   const totalProjects = projects.length;
@@ -21,7 +18,11 @@ export const MainContent = ({ projects }) => {
     (p) =>
       p.owner._id !== userId && p.collaborators.some((c) => c._id === userId)
   ).length;
-
+  // NAVIGATE TO PROJECT DETAILS PAGE
+    const openProject = (projectId) => {
+      openModal();
+      navigate(`/dashboard/details/${projectId}`);
+    };
   return (
     <div className="main-content">
       <div className="state-section">
@@ -31,11 +32,11 @@ export const MainContent = ({ projects }) => {
         </div>
         <div className="state-card">
           <span>Your Projects</span>
-          <h3>{ownerProjects.length}</h3>
+          <h3>{ownerProjects}</h3>
         </div>
         <div className="state-card">
           <span>Collaborator Projects</span>
-          <h3>{collaboratorProjects.length}</h3>
+          <h3>{collaboratorProjects}</h3>
         </div>
       </div>
 
@@ -43,7 +44,7 @@ export const MainContent = ({ projects }) => {
         <h3>Projects </h3>
         <div className="projects-container">
           <div className="project-card create-card">
-            <button id="create_project" onClick={prepareCreateProject}>
+            <button id="create_project" onClick={openModal}>
               <MdOutlineCreateNewFolder />
               <p>Create New Project</p>
             </button>
@@ -53,7 +54,7 @@ export const MainContent = ({ projects }) => {
             <ProjectCard
               key={project._id}
               project={project}
-              onOpen={() => console.log("Open project", project._id)}
+              onOpen={() => openProject(project._id)}
             />
           ))}
         </div>

@@ -1,0 +1,149 @@
+.project-details{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(230, 230, 230);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.project-header {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.project-header h2 {
+  color: #344955;
+}
+.project-header p {
+  color: #000000;
+}
+.project-info {
+  display: flex;
+  gap: 10px;
+  background-color: white;
+  padding: 20px;
+  height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+.project-users{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: black;
+
+}
+.project-date{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+}
+.project-date p{
+    color: #50727b;
+    border: 1px solid #50727b;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.project-owner{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    
+}
+.project-owner p{
+    color: #50727b;
+    border: 1px solid #50727b;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.project-collaborators{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.project-collaborators>div{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.project-collaborators p{
+    color: #50727b;
+    border: 1px solid #50727b;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.project-actions{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.project-actions button{
+    background-color: #78a083;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.project-actions .btn-delete{
+    background-color: #c94c4c;
+}
+.project-actions .btn-delete:hover{
+    background-color: #a83a3a;
+}
+
+.project-actions button:hover{
+    background-color: #5a7a63;
+}
+
+.project-tags{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+}
+.tag{
+    color: white;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+    background-color: #50727b;
+
+}
+.project-display{
+    background-color: blue;
+    width: 70%;
+    height: 100%;
+}
