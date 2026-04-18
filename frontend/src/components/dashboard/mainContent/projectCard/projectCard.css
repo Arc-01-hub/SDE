@@ -1,28 +1,29 @@
 .project-card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
   width: 28%;
   height: 170px;
-  margin-top: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  margin-top: var(--space-sm);
+  box-shadow: var(--shadow-xs);
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-md);
 }
 
 .card-header {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #344955;
+  align-items: start;
+  gap: var(--space-sm);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -31,18 +32,18 @@
 }
 
 .card-body {
-  margin: 16px 0;
+  margin: var(--space-lg) 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  color: #50727b;
+  gap: var(--space-sm);
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
 .info {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-xs);
 }
 
 .card-footer {
@@ -53,31 +54,31 @@
 
 .badge {
   font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
   opacity: 0.8;
 }
 
 .badge.owner {
-  background: #78a083;
-  color: white;
+  background: var(--accent);
+  color: var(--text-inverse);
 }
 
 .badge.collaborator {
-  background: #50727b;
-  color: white;
+  background: var(--bg-hover-secondary);
+  color: var(--text-inverse);
 }
 
 button {
   background: transparent;
-  color: var(--color5);
+  color: var(--text-secondary);
   border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 
 button:hover {
-  background: #1c272b63;
-  color: var(--white);
+  background: var(--bg-hover-secondary);
+  color: var(--text-inverse);
 }

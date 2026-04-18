@@ -11,6 +11,11 @@ import { ProjectDetails } from "./components/dashboard/projectDetails/projectDet
 import { MainContent } from "./components/dashboard/mainContent/mainContent";
 import { useEffect, useState } from "react";
 import api from "../src/components/api/api";
+import './styles/variables.css';
+import {jwtDecode} from "jwt-decode";
+import logout from "./components/auth/logout/logout";
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+
 function App() {
 
   const [projects, setProjects] = useState([]);
@@ -27,6 +32,28 @@ function App() {
         getProjects();
       }
     }, [userId]);
+
+
+  const isTokenExpired = (token) => {
+    try {
+      const { exp } = jwtDecode(token);
+      console.log(exp);
+      return Date.now() >= exp * 1000;
+    } catch (error) {
+      return true;
+    }
+  }
+
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("authToken");
+  //   if(token){
+  //     if (isTokenExpired(token)) {
+  //     logout();
+  //     console.log("Token is expired");
+  //   }
+  //   }
+  // }, []);
   return (
     <>
       <Header />
@@ -36,12 +63,13 @@ function App() {
         <Route path="/contact" element={<div>Contact Page</div>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="projects" element={<MainContent projects={projects} />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
+          <Route index element={<MainContent projects={projects} />} />
           <Route path="create" element={<CreateProject />} />
           <Route path="details/:id" element={<ProjectDetails />} />
         </Route>
         <Route path="/editor" element={<Editor />} />
+        <Route path="/profile" element={<Profile/>} />
       </Routes>
     </>
   );

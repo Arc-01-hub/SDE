@@ -1,14 +1,14 @@
 import "./projectCard.css";
 
 export default function ProjectCard({ project, onOpen }) {
-  const userId = localStorage.getItem("userId"); // id ديال user الحالي
+  const userId = localStorage.getItem("userId");
 
   const isOwner = project.owner._id === userId;
   const isCollaborator = project.collaborators.some((c) => c._id === userId);
 
   const UpdateFormat = new Date(project.updatedAt);
   return (
-    <div className="project-card">
+    <div className="project-card" onClick={onOpen}>
       <div className="card-header">
         <span className="project-title">{project.title}</span>
       </div>

@@ -7,7 +7,9 @@ const projectSchema = new mongoose.Schema(
       required: true,
       default: "Untitled Document",
     },
-
+    desc: {
+      type: String,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

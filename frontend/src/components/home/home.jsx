@@ -2,94 +2,71 @@ import { FiArrowUpRight } from "react-icons/fi";
 import "./home.css";
 import { PiShootingStarThin } from "react-icons/pi";
 import { HiInformationCircle } from "react-icons/hi";
-/**
- * Home component - Main landing page of the Shared Document Editor application
- *
- * This component renders the home page that introduces users to a collaborative
- * document editing platform. It displays:
- * - A welcoming introduction with an inspiring image showcasing the concept of
- *   document collaboration
- * - An "About" section explaining that the platform enables teams to work together
- *   seamlessly with features including real-time editing, version control, and
- *   team communication
- * - A "Get Started" section encouraging users to create an account or log in to
- *   begin collaborating on documents
- *
- * The app is a shared document editor that allows multiple users to edit documents
- * simultaneously in real-time, with built-in version control to track changes and
- * communication tools to facilitate team collaboration.
- *
- * @component
- * @returns {JSX.Element} The home page layout with intro, about, and get-started sections
- */
+import { Link } from "react-router-dom";
+import { isLoggedIn } from "../../utils/auth";
+import { useEffect } from "react";
+
 export const Home = () => {
+
   return (
     <main className="home-container">
-      <section className="intro-section">
-        <div className="intro-text">
-          <h2>Welcome to the Shared Document Editor</h2>
-          <p>Collaborate on documents in real-time with ease.</p>
-        </div>
-        <div className="intro-image">
-          <img
-            src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdW1lbnQlMjBlZGl0b3J8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
-            alt="Document Collaboration"
-          />
+      <section className="hero">
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <h1>Shared Document Editor</h1>
+            <p className="subtitle">Collaborate in real time — edit, comment and ship work together.</p>
+            <div className="hero-ctas">
+                        {
+                          !isLoggedIn()?
+                          <>
+                            <Link to="/register" className="btn primary">Get Started <FiArrowUpRight className="btn-icon" /></Link>
+                          <Link to="/login" className="btn ghost">Sign In</Link>
+                          </>
+                        :<Link to="/dashboard" className="btn primary">Dashboard</Link>
+                        }
+            </div>
+            <ul className="hero-features" aria-hidden>
+              <li><strong>Real-time editing</strong> with conflict-free collaboration</li>
+              <li><strong>Version history</strong> and easy rollback</li>
+              <li><strong>Comments & mentions</strong> to streamline reviews</li>
+            </ul>
+          </div>
+
+          <figure className="hero-media" aria-hidden>
+            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdW1lbnQlMjBlZGl0b3J8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="Team collaborating on documents"/>
+          </figure>
         </div>
       </section>
-      <section id="about" className="about-section">
-        <h3>
-          <HiInformationCircle />
-          About
-        </h3>
-        <span className="about-title">Collaborate Smarter, Together</span>
+
+      <section className="about-section" id="about">
+        <div className="about-head">
+          <HiInformationCircle size={22} />
+          <h2>Collaborate Smarter, Together</h2>
+        </div>
+
         <p>
-          Our platform is designed to <strong>bring teams together</strong> and
-          make collaboration on documents{" "}
-          <strong>effortless and productive</strong>. Whether you're
-          brainstorming ideas, drafting reports, or finalizing important
-          content, our app ensures that
-          <strong>everyone stays aligned and contributes effectively</strong>.
-          Say goodbye to scattered files and miscommunication – everything your
-          team needs is in one place.
+          Our platform brings teams together with intuitive tools for drafting,
+          reviewing and finalizing content. Instantly see updates, leave comments,
+          and track changes so everyone stays aligned.
         </p>
-        <p>
-          With{" "}
-          <strong>
-            real-time editing, version control, and intuitive tools
-          </strong>
-          , your team can work simultaneously without conflicts or confusion.
-          Instantly see updates, leave comments, and track changes to keep
-          projects <strong>transparent and organized</strong>. Our platform
-          empowers teams to{" "}
-          <strong>
-            move faster, reduce errors, and maintain a clear workflow
-          </strong>
-          , making collaboration seamless and enjoyable.
-        </p>
-        <p>
-          We believe that <strong>great teamwork drives great results</strong>.
-          By providing a central hub for shared documents and communication, our
-          app transforms how teams
-          <strong>create, review, and deliver content together</strong>. From
-          small projects to large-scale initiatives, our platform helps teams{" "}
-          <strong>stay coordinated, informed, and productive</strong>, making
-          collaboration not just easier, but smarter.
-        </p>
-      </section>
-      <section id="getStart" className="get-started-section">
-        <h3>
-          <PiShootingStarThin />
-          Get Started
-        </h3>
-        <p>
-          Ready to enhance your team's collaboration? Create an account or log
-          in to start working together on documents in real-time. Experience the
-          power of seamless teamwork and take your projects to the next level!
-        </p>
-        <button className="get-started-button">
-          Get Started <FiArrowUpRight />
-        </button>
+
+        <div className="about-grid">
+          <div className="card feature">
+            <PiShootingStarThin className="feature-icon" />
+            <h3>Fast Collaboration</h3>
+            <p>Real-time cursors, presence indicators and low-latency syncing.</p>
+          </div>
+          <div className="card feature">
+            <HiInformationCircle className="feature-icon" />
+            <h3>Reliable History</h3>
+            <p>Automatic versioning keeps your work safe and recoverable.</p>
+          </div>
+          <div className="card feature">
+            <FiArrowUpRight className="feature-icon" />
+            <h3>Easy Onboarding</h3>
+            <p>Invite teammates, share links, and start collaborating instantly.</p>
+          </div>
+        </div>
       </section>
     </main>
   );
