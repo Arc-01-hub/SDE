@@ -1,0 +1,92 @@
+.left-sidebar {
+  width: 20%;
+  height: 100%;
+  padding: var(--space-xs);
+  background-color: var(--bg-primary);
+  box-shadow: var(--shadow-sm);
+}
+.left-sidebar a{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  color: var(--text-primary);
+  
+}
+.sidebar-links a {
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+  color: var(--text-primary);
+}
+.sidebar-links a:hover {
+  color: var(--accent);
+  background-color: var(--bg-hover-accent);
+}
+
+.favorite-section {
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-lg);
+}
+.favorite-section h3 {
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.favorite-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.favorite-items a {
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+  color: var(--text-primary);
+}
+.favorite-items a:hover {
+  color: var(--accent);
+  background-color: var(--bg-hover-accent);
+}
+
+.current-plan {
+  margin-top: var(--space-2xl);
+  padding: var(--space-lg);
+  background-color: var(--bg-hover-accent);
+  border-radius: var(--radius-md);
+}
+.current-plan h3 {
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+.current-plan p {
+  color: var(--text-primary);
+  margin: var(--space-xs) 0;
+}
+
+.logout-button {
+  margin-top: var(--space-xl);
+  width: 100%;
+  padding: var(--space-md);
+  color: var(--error);
+  background-color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.logout-button:hover {
+  background-color: var(--bg-hover-error);
+  color: var(--error-dark);
+}

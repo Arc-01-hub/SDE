@@ -1,0 +1,50 @@
+📋 Plan العمل (نخدمو هكا)
+🔹 المرحلة 1 — Setup
+
+init backend
+
+connect mongo
+
+test API
+
+🔹 المرحلة 2 — Auth
+
+register / login
+
+jwt
+
+🔹 المرحلة 3 — Documents CRUD
+
+create
+
+list
+
+open
+
+🔹 المرحلة 4 — Editor
+
+React-Quill
+
+save content
+
+🔹 المرحلة 5 — Realtime
+
+Socket.io
+
+broadcast changes
+
+🔹 المرحلة 6 — Polishing
+
+UI
+
+permissions
+
+security
+
+🔹 المرحلة 7 — Deployment
+
+test
+
+prepare demo
+
+🔥 وبهذا كتكون تجاوزتي مستوى CRUD بكثير
