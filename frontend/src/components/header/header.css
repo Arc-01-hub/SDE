@@ -1,0 +1,192 @@
+header.header {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 var(--space-lg);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.logo:hover { opacity: 0.8; }
+
+.logo h1 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Profile Section */
+.profile-section { position: relative; }
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-xs) var(--space-md) var(--space-xs) var(--space-xs);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.profile-button:hover {
+  background: var(--bg-hover-accent-soft);
+  border-color: var(--border-accent);
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.9rem;
+}
+
+.profile-name { color: var(--text-primary); }
+
+.dropdown-icon {
+  font-size: 1.2rem;
+  transition: transform var(--transition-base);
+  color: var(--text-secondary);
+}
+
+.dropdown-icon.open { transform: rotate(180deg); }
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subtle);
+  margin-top: var(--space-xs);
+  overflow: hidden;
+  min-width: 200px;
+  animation: slideDown var(--transition-base) forwards;
+  z-index: var(--z-modal);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  text-decoration: none;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-hover-accent);
+  color: var(--accent);
+}
+
+.dropdown-item:first-child { border-top: none; }
+
+.dropdown-item.logout { color: var(--error); }
+.dropdown-item.logout:hover {
+  background: var(--bg-hover-error);
+  color: var(--error-dark);
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.auth-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  border: none;
+  cursor: pointer;
+}
+
+.auth-btn.ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.auth-btn.ghost:hover {
+  background: var(--bg-hover-primary);
+  border-color: var(--border-default);
+}
+
+.auth-btn.primary {
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-inner { height: 64px; }
+  .logo h1 { font-size: 1.2rem; }
+  .profile-name { display: none; }
+  .profile-button { padding: 8px; gap: 8px; }
+  .auth-buttons { gap: 8px; }
+  .auth-btn { padding: 8px 14px; font-size: 0.9rem; }
+  .dropdown-menu { right: -8px; min-width: 180px; }
+}
