@@ -6,7 +6,7 @@ import api from "../api/api";
 import { ProjectsContext } from "./ProjectsContext";
 import { CgProfile } from "react-icons/cg";
 import { CiSettings, CiLogout } from "react-icons/ci";
-import { MdArrowDropDown } from "react-icons/md";
+import { MdArrowDropDown, MdMenu, MdClose } from "react-icons/md";
 import { NotificationBell } from "../notificationBell/NotificationBell";
 
 export const Dashboard = () => {
@@ -15,6 +15,7 @@ export const Dashboard = () => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const userDropdownRef = useRef(null);
 
   const refreshProjects = async () => {
@@ -44,6 +45,11 @@ export const Dashboard = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [userDropdownOpen]);
 
+  // Close sidebar on route change
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [navigate]);
+
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userId");
@@ -59,6 +65,14 @@ export const Dashboard = () => {
     <div className="dashboard-container">
       <div className="dashboard-header">
         <div className="header-left">
+          {/* Hamburger - mobile only */}
+          <button
+            className="hamburger-btn"
+            onClick={() => setSidebarOpen((p) => !p)}
+            aria-label="Toggle sidebar"
+          >
+            {sidebarOpen ? <MdClose size={20} /> : <MdMenu size={20} />}
+          </button>
           <button className="logo-btn" onClick={() => navigate("/")}>
             <h1>SDE</h1>
           </button>
@@ -116,7 +130,18 @@ export const Dashboard = () => {
       </div>
 
       <div className="dashboard-content">
-        <LeftSidebar favProjects={projects.slice(0, 3)} />
+        {/* Mobile overlay */}
+        <div
+          className={`sidebar-overlay ${sidebarOpen ? "visible" : ""}`}
+          onClick={() => setSidebarOpen(false)}
+        />
+
+        <LeftSidebar
+          favProjects={projects.slice(0, 3)}
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
+
         <ProjectsContext.Provider value={{ projects, refreshProjects }}>
           <Outlet />
         </ProjectsContext.Provider>
