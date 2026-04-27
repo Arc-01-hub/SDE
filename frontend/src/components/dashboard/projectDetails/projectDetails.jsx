@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import api from "../../api/api";
 import { MdCheck, MdClose } from "react-icons/md";
+import { useContext } from "react";
+import { ProjectsContext } from "../ProjectsContext";
 
 export const ProjectDetails = () => {
   const initialProject = useLocation().state?.project;
@@ -20,6 +22,7 @@ export const ProjectDetails = () => {
   const [inviteStatus, setInviteStatus] = useState(""); // success | error | ""
   const [inviteMsg, setInviteMsg] = useState("");
   const [inviting, setInviting] = useState(false);
+  const { refreshProjects } = useContext(ProjectsContext);
 
   const userId = localStorage.getItem("userId");
 
@@ -84,6 +87,7 @@ export const ProjectDetails = () => {
     if (!window.confirm("Delete this project? This cannot be undone.")) return;
     try {
       await api.delete(`/project/${project._id}`);
+      await refreshProjects(); // ✅ ADD THIS
       nav("/dashboard");
     } catch (err) {
       alert("Failed to delete project.");

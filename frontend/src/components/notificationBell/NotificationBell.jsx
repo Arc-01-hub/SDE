@@ -78,7 +78,7 @@ export const NotificationBell = () => {
         aria-label="Notifications"
         onClick={() => { setOpen((p) => !p); if (!open) fetchInvitations(); }}
       >
-        <IoIosNotificationsOutline size={20} />
+        <IoIosNotificationsOutline size={32} />
         {count > 0 && <span className="notif-badge">{count}</span>}
       </button>
 

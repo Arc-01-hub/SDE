@@ -143,7 +143,9 @@ export const Dashboard = () => {
         />
 
         <ProjectsContext.Provider value={{ projects, refreshProjects }}>
-          <Outlet />
+          <div className="dashboard-main">
+            <Outlet />
+          </div>
         </ProjectsContext.Provider>
       </div>
     </div>

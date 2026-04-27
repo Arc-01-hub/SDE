@@ -14,8 +14,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
 }
 .notification-btn:hover {
   background: var(--bg-hover-accent);
@@ -166,4 +166,10 @@
 .notif-btn.decline:hover:not(:disabled) {
   background: var(--error);
   color: #fff;
+}
+@media (max-width: 768px) {
+  .notif-dropdown {
+    width: calc(100vw - 32px);
+    right: -40px;
+  }
 }

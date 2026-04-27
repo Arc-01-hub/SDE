@@ -7,9 +7,9 @@ import { MdOutlineRecentActors } from "react-icons/md";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import { GoProjectRoadmap } from "react-icons/go";
-export const LeftSidebar = ({favProjects}) => {
+export const LeftSidebar = ({ favProjects, isOpen, onClose }) => {
   return (
-    <div className="left-sidebar">
+      <div className={`left-sidebar ${isOpen ? "open" : ""}`}>
       <div className="sidebar-links">
         <Link to="/dashboard">
           <SlDocs />
