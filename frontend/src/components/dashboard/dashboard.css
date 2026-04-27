@@ -197,6 +197,13 @@
   flex: 1;
   overflow: hidden;
   position: relative;
+  min-height: 0;
+}
+.dashboard-main {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  height: 100%;
 }
 
 /* Sidebar overlay for mobile */
