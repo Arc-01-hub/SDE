@@ -20,6 +20,7 @@ export const Header = () => {
     "/dashboard/create",
     "/dashboard/details",
     "/editor",
+    "/shared",
   ];
 
 
@@ -42,7 +43,7 @@ export const Header = () => {
     localStorage.removeItem("userEmail");
     localStorage.removeItem("userName");
     setDropdownOpen(false);
-    window.location.href ="/"
+    window.location.href = "/"
   };
   if (hiddenRoutes.some(route => location.pathname.startsWith(route))) {
     return null;
