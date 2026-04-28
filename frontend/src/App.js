@@ -12,6 +12,7 @@ import { ProjectDetails } from "./components/dashboard/projectDetails/projectDet
 import { MainContent } from "./components/dashboard/mainContent/mainContent";
 import { Trash } from "./components/dashboard/trash/Trash";
 import { Recent } from "./components/dashboard/recent/Recent";
+import { Shared } from "./components/shared/Shared";
 import { useEffect, useState } from "react";
 import api from "../src/components/api/api";
 import './styles/variables.css';
@@ -24,9 +25,9 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
     api
-        .get(`/project/user/${userId}`)
-        .then((resp) => setProjects(resp.data))
-        .catch((err) => console.log(err));
+      .get(`/project/user/${userId}`)
+      .then((resp) => setProjects(resp.data))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -36,27 +37,30 @@ function App() {
   }, []);
 
   return (
-      <>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<div>Contact Page</div>} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-              path="/dashboard"
-              element={<ProtectedRoute><Dashboard /></ProtectedRoute>}
-          >
-            <Route index element={<MainContent projects={projects} />} />
-            <Route path="create" element={<CreateProject />} />
-            <Route path="details/:id" element={<ProjectDetails />} />
-          </Route>
-          <Route path="/editor" element={<Editor />} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/trash" element={<ProtectedRoute><Trash /></ProtectedRoute>} />
-          <Route path="/recent" element={<ProtectedRoute><Recent /></ProtectedRoute>} />
-        </Routes>
-      </>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<div>Contact Page</div>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={<ProtectedRoute><Dashboard /></ProtectedRoute>}
+        >
+          <Route index element={<MainContent projects={projects} />} />
+          <Route path="create" element={<CreateProject />} />
+          <Route path="details/:id" element={<ProjectDetails />} />
+        </Route>
+        <Route path="/shared" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
+          <Route index element={<Shared />} />
+        </Route>
+        <Route path="/editor" element={<Editor />} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/trash" element={<ProtectedRoute><Trash /></ProtectedRoute>} />
+        <Route path="/recent" element={<ProtectedRoute><Recent /></ProtectedRoute>} />
+      </Routes>
+    </>
   );
 }
 
