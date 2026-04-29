@@ -54,7 +54,7 @@ export const Home = () => {
           <figure className="hero-media" aria-hidden>
             <div className="hero-media-inner">
               <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&q=80"
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80"
                 alt="Team collaborating on documents"
               />
             </div>
