@@ -26,7 +26,7 @@ function App() {
     if (!userId) return;
     api
       .get(`/project/user/${userId}`)
-      .then((resp) => setProjects(resp.data))
+      .then((resp) => setProjects(resp.data))  // ✅ fixed [resp.data]
       .catch((err) => console.log(err));
   };
 
@@ -44,21 +44,23 @@ function App() {
         <Route path="/contact" element={<div>Contact Page</div>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={<ProtectedRoute><Dashboard /></ProtectedRoute>}
-        >
+
+        {/* Dashboard layout — all nested routes get sidebar + header */}
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
           <Route index element={<MainContent projects={projects} />} />
           <Route path="create" element={<CreateProject />} />
           <Route path="details/:id" element={<ProjectDetails />} />
+          <Route path="recent" element={<Recent />} />   {/* ✅ nested */}
+          <Route path="trash" element={<Trash />} />     {/* ✅ nested */}
         </Route>
+
+        {/* Shared uses dashboard layout too */}
         <Route path="/shared" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
           <Route index element={<Shared />} />
         </Route>
+
         <Route path="/editor" element={<Editor />} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/trash" element={<ProtectedRoute><Trash /></ProtectedRoute>} />
-        <Route path="/recent" element={<ProtectedRoute><Recent /></ProtectedRoute>} />
       </Routes>
     </>
   );
